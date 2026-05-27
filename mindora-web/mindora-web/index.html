@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mindora — Tu espacio de bienestar</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       SPLASH SCREEN
+  ═══════════════════════════════════════════ -->
+  <div id="splash" class="splash">
+    <div class="splash__inner">
+      <div class="splash__logo">🌿</div>
+      <h1 class="splash__name">Mindora</h1>
+      <p class="splash__phrase">"Un momento de paz puede<br>transformar todo tu día"</p>
+      <div class="splash__dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SIDEBAR NAV
+  ═══════════════════════════════════════════ -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <span class="sidebar__icon">🌿</span>
+      <span class="sidebar__name">Mindora</span>
+    </div>
+    <ul class="sidebar__menu">
+      <li class="sidebar__item active" data-screen="home">
+        <span class="sidebar__emoji">🏠</span>
+        <span class="sidebar__label">Inicio</span>
+      </li>
+      <li class="sidebar__item" data-screen="mood">
+        <span class="sidebar__emoji">😌</span>
+        <span class="sidebar__label">Estado</span>
+      </li>
+      <li class="sidebar__item" data-screen="breathing">
+        <span class="sidebar__emoji">💨</span>
+        <span class="sidebar__label">Respirar</span>
+      </li>
+      <li class="sidebar__item" data-screen="bubbles">
+        <span class="sidebar__emoji">🫧</span>
+        <span class="sidebar__label">Bubble Pop</span>
+      </li>
+      <li class="sidebar__item" data-screen="journal">
+        <span class="sidebar__emoji">📓</span>
+        <span class="sidebar__label">Diario</span>
+      </li>
+      <li class="sidebar__item" data-screen="sounds">
+        <span class="sidebar__emoji">🎵</span>
+        <span class="sidebar__label">Sonidos</span>
+      </li>
+      <li class="sidebar__item" data-screen="affirmations">
+        <span class="sidebar__emoji">✨</span>
+        <span class="sidebar__label">Afirmaciones</span>
+      </li>
+    </ul>
+    <div class="sidebar__emergency">
+      <button class="btn-emergency" id="emergencyBtn">
+        🆘 Necesito ayuda
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════ -->
+  <main class="main" id="main">
+
+    <!-- ── HOME ─────────────────────────────── -->
+    <section class="screen active" id="screen-home">
+      <div class="screen__header">
+        <div>
+          <h2 class="screen__greeting" id="greetingText">Buenos días 🌸</h2>
+          <p class="screen__date" id="dateText"></p>
+        </div>
+        <div class="avatar">M</div>
+      </div>
+
+      <!-- Mood rápido -->
+      <div class="card mood-quick" id="moodQuickCard">
+        <p class="label">¿Cómo te sientes hoy?</p>
+        <div class="mood-row">
+          <button class="mood-btn" data-mood="Feliz" data-emoji="😊">😊</button>
+          <button class="mood-btn" data-mood="Triste" data-emoji="😔">😔</button>
+          <button class="mood-btn" data-mood="Ansioso" data-emoji="😰">😰</button>
+          <button class="mood-btn" data-mood="Calmado" data-emoji="😌">😌</button>
+          <button class="mood-btn" data-mood="Enojado" data-emoji="😤">😤</button>
+          <button class="mood-btn" data-mood="Cansado" data-emoji="😴">😴</button>
+        </div>
+      </div>
+
+      <!-- Quote del día -->
+      <div class="card quote-card">
+        <div class="quote-icon">❝</div>
+        <p class="quote-text" id="quoteText"></p>
+        <p class="quote-author" id="quoteAuthor"></p>
+        <button class="btn-ghost quote-refresh" id="refreshQuote">↻ Nueva frase</button>
+      </div>
+
+      <!-- Afirmación del día -->
+      <div class="card affirmation-card">
+        <span class="affirmation-spark">✨</span>
+        <p class="affirmation-text" id="affirmationText"></p>
+      </div>
+
+      <!-- Quick cards grid -->
+      <div class="quick-grid">
+        <div class="quick-card qc-sky" data-nav="breathing">
+          <span class="qc-emoji">💨</span>
+          <div class="qc-title">Respirar</div>
+          <div class="qc-sub">Box · 4-7-8 · Calm</div>
+        </div>
+        <div class="quick-card qc-peach" data-nav="journal">
+          <span class="qc-emoji">📓</span>
+          <div class="qc-title">Diario</div>
+          <div class="qc-sub">Escribe tu día</div>
+        </div>
+        <div class="quick-card qc-sage" data-nav="sounds">
+          <span class="qc-emoji">🎵</span>
+          <div class="qc-title">Sonidos</div>
+          <div class="qc-sub">Lluvia · Mar · Bosque</div>
+        </div>
+        <div class="quick-card qc-lav" data-nav="bubbles">
+          <span class="qc-emoji">🫧</span>
+          <div class="qc-title">Bubble Pop</div>
+          <div class="qc-sub">Libera el estrés</div>
+        </div>
+      </div>
+
+      <!-- Self-care tip -->
+      <div class="card selfcare-card" id="selfcareTip">
+        <div class="selfcare-left">
+          <span class="selfcare-emoji" id="tipEmoji">💧</span>
+        </div>
+        <div>
+          <p class="selfcare-title" id="tipTitle">Hidrátate</p>
+          <p class="selfcare-desc" id="tipDesc">Tomar agua regularmente mejora el estado de ánimo y la concentración.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MOOD CHECK-IN ──────────────────── -->
+    <section class="screen" id="screen-mood">
+      <div class="screen__header">
+        <h2 class="screen__title">¿Cómo estás?</h2>
+      </div>
+      <p class="screen__sub">Selecciona tu estado emocional ahora</p>
+
+      <div class="mood-grid">
+        <div class="mood-item" data-mood="Feliz" data-emoji="😊">
+          <span class="mi-emoji">😊</span>
+          <span class="mi-label">Feliz</span>
+        </div>
+        <div class="mood-item" data-mood="Triste" data-emoji="😔">
+          <span class="mi-emoji">😔</span>
+          <span class="mi-label">Triste</span>
+        </div>
+        <div class="mood-item" data-mood="Ansioso" data-emoji="😰">
+          <span class="mi-emoji">😰</span>
+          <span class="mi-label">Ansioso</span>
+        </div>
+        <div class="mood-item" data-mood="Calmado" data-emoji="😌">
+          <span class="mi-emoji">😌</span>
+          <span class="mi-label">Calmado</span>
+        </div>
+        <div class="mood-item" data-mood="Enojado" data-emoji="😤">
+          <span class="mi-emoji">😤</span>
+          <span class="mi-label">Enojado</span>
+        </div>
+        <div class="mood-item" data-mood="Cansado" data-emoji="😴">
+          <span class="mi-emoji">😴</span>
+          <span class="mi-label">Cansado</span>
+        </div>
+      </div>
+
+      <div class="intensity-section">
+        <p class="label">Intensidad del estado</p>
+        <div class="intensity-bar" id="intensityBar">
+          <div class="int-seg lit" data-val="1"></div>
+          <div class="int-seg lit" data-val="2"></div>
+          <div class="int-seg lit" data-val="3"></div>
+          <div class="int-seg" data-val="4"></div>
+          <div class="int-seg" data-val="5"></div>
+          <div class="int-seg" data-val="6"></div>
+          <div class="int-seg" data-val="7"></div>
+        </div>
+        <div class="intensity-labels">
+          <span>Leve</span><span>Intenso</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="label">¿Algo que quieras recordar?</label>
+        <textarea id="moodNote" class="textarea" placeholder="Escribe aquí..." rows="3"></textarea>
+      </div>
+
+      <button class="btn-primary" id="saveMoodBtn" disabled>Guardar estado ✓</button>
+
+      <!-- Historial -->
+      <div class="mood-history" id="moodHistory">
+        <h3 class="section-title">Registro reciente</h3>
+        <div id="moodHistoryList"></div>
+      </div>
+    </section>
+
+    <!-- ── BREATHING ──────────────────────── -->
+    <section class="screen screen--dark" id="screen-breathing">
+      <div class="breath-inner">
+        <h2 class="breath-title">Respiración guiada</h2>
+        <p class="breath-sub">Cierra los ojos · Sigue el ritmo</p>
+
+        <div class="breath-tabs" id="breathTabs">
+          <button class="btab active" data-ex="0">Box</button>
+          <button class="btab" data-ex="1">4-7-8</button>
+          <button class="btab" data-ex="2">Calm</button>
+        </div>
+
+        <p class="breath-desc" id="breathDesc">Técnica cuadrada: equilibra mente y cuerpo</p>
+
+        <!-- Circle -->
+        <div class="breath-circle-wrap">
+          <div class="breath-ring breath-ring--outer" id="bRingOuter"></div>
+          <div class="breath-ring breath-ring--mid" id="bRingMid"></div>
+          <div class="breath-circle" id="breathCircle">
+            <span class="breath-count" id="breathCount">4</span>
+          </div>
+        </div>
+
+        <p class="breath-phase-label" id="breathPhase">Inhala lentamente...</p>
+
+        <div class="breath-dots" id="breathDots"></div>
+
+        <p class="breath-cycles" id="breathCycles"></p>
+
+        <button class="btn-breath" id="breathToggle">▶ Comenzar</button>
+      </div>
+    </section>
+
+    <!-- ── BUBBLE POP ──────────────────────── -->
+    <section class="screen" id="screen-bubbles">
+      <div class="screen__header">
+        <h2 class="screen__title">🫧 Bubble Pop</h2>
+        <button class="btn-ghost" id="resetBubbles">↺ Reiniciar</button>
+      </div>
+      <p class="screen__sub">Toca las burbujas · Libera el estrés</p>
+
+      <div class="bubble-scores">
+        <div class="bscore">
+          <div class="bscore__val" id="popCount">0</div>
+          <div class="bscore__lab">Pops</div>
+        </div>
+        <div class="stress-bar-wrap">
+          <div class="stress-bar-track">
+            <div class="stress-bar-fill" id="stressBarFill"></div>
+          </div>
+          <p class="stress-label" id="stressLabel">Estrés: 100%</p>
+        </div>
+        <div class="bscore">
+          <div class="bscore__val" id="stressVal">100%</div>
+          <div class="bscore__lab">Estrés</div>
+        </div>
+      </div>
+
+      <div class="bubble-canvas" id="bubbleCanvas">
+        <div class="bubble-celebration hidden" id="bubbleCelebration">
+          <p>🎉</p>
+          <p>¡Estrés liberado!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── JOURNAL ──────────────────────────── -->
+    <section class="screen" id="screen-journal">
+      <div class="screen__header">
+        <h2 class="screen__title">Mi Diario</h2>
+        <button class="btn-primary btn-sm" id="openNewEntry">+ Nueva entrada</button>
+      </div>
+
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="journalSearch" class="search-input" placeholder="Buscar en mi diario..." />
+      </div>
+
+      <div id="journalList" class="journal-list"></div>
+
+      <!-- Modal new entry -->
+      <div class="modal-overlay hidden" id="journalModal">
+        <div class="modal">
+          <div class="modal__header">
+            <h3>Nueva entrada</h3>
+            <button class="btn-ghost" id="closeModal">✕</button>
+          </div>
+          <div class="mood-row modal-mood">
+            <button class="mood-btn" data-mood="Feliz" data-emoji="😊">😊</button>
+            <button class="mood-btn" data-mood="Triste" data-emoji="😔">😔</button>
+            <button class="mood-btn" data-mood="Ansioso" data-emoji="😰">😰</button>
+            <button class="mood-btn" data-mood="Calmado" data-emoji="😌">😌</button>
+            <button class="mood-btn" data-mood="Enojado" data-emoji="😤">😤</button>
+            <button class="mood-btn" data-mood="Cansado" data-emoji="😴">😴</button>
+          </div>
+          <input type="text" id="journalTitle" class="input" placeholder="Título" />
+          <textarea id="journalContent" class="textarea" rows="5" placeholder="¿Cómo fue tu día?"></textarea>
+          <input type="text" id="journalTags" class="input" placeholder="Etiquetas: gratitud, calma..." />
+          <button class="btn-primary" id="saveJournalBtn">Guardar ✓</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SOUNDS ──────────────────────────── -->
+    <section class="screen" id="screen-sounds">
+      <div class="screen__header">
+        <h2 class="screen__title">Sonidos calmantes</h2>
+      </div>
+      <p class="screen__sub">Selecciona uno o más para mezclar</p>
+
+      <div class="sounds-grid" id="soundsGrid">
+        <div class="sound-card" data-sound="rain">
+          <div class="sound-icon">🌧️</div>
+          <div class="sound-name">Lluvia</div>
+          <div class="sound-desc">Lluvia suave</div>
+          <div class="sound-wave" id="wave-rain"></div>
+        </div>
+        <div class="sound-card" data-sound="ocean">
+          <div class="sound-icon">🌊</div>
+          <div class="sound-name">Océano</div>
+          <div class="sound-desc">Olas del mar</div>
+          <div class="sound-wave" id="wave-ocean"></div>
+        </div>
+        <div class="sound-card" data-sound="forest">
+          <div class="sound-icon">🌿</div>
+          <div class="sound-name">Bosque</div>
+          <div class="sound-desc">Pájaros y viento</div>
+          <div class="sound-wave" id="wave-forest"></div>
+        </div>
+        <div class="sound-card" data-sound="white">
+          <div class="sound-icon">〰️</div>
+          <div class="sound-name">Ruido Blanco</div>
+          <div class="sound-desc">Concentración</div>
+          <div class="sound-wave" id="wave-white"></div>
+        </div>
+        <div class="sound-card" data-sound="fire">
+          <div class="sound-icon">🔥</div>
+          <div class="sound-name">Chimenea</div>
+          <div class="sound-desc">Crepitar del fuego</div>
+          <div class="sound-wave" id="wave-fire"></div>
+        </div>
+      </div>
+
+      <div class="timer-section">
+        <p class="label">Temporizador</p>
+        <div class="timer-btns">
+          <button class="timer-btn active" data-min="0">∞</button>
+          <button class="timer-btn" data-min="5">5 min</button>
+          <button class="timer-btn" data-min="10">10 min</button>
+          <button class="timer-btn" data-min="30">30 min</button>
+          <button class="timer-btn" data-min="60">1 hora</button>
+        </div>
+        <p class="timer-display" id="timerDisplay"></p>
+      </div>
+    </section>
+
+    <!-- ── AFFIRMATIONS ─────────────────────── -->
+    <section class="screen" id="screen-affirmations">
+      <div class="screen__header">
+        <h2 class="screen__title">Afirmaciones positivas</h2>
+      </div>
+      <p class="screen__sub">Empieza el día con intención</p>
+
+      <div class="affirmation-hero">
+        <div class="affirmation-glow"></div>
+        <p class="affirmation-big" id="affirmationBig"></p>
+        <span class="affirmation-cat" id="affirmationCat"></span>
+      </div>
+
+      <div class="affirmation-controls">
+        <button class="btn-ghost" id="prevAffirmation">← Anterior</button>
+        <button class="btn-primary" id="nextAffirmation">Siguiente →</button>
+      </div>
+
+      <div class="affirmation-cats">
+        <button class="cat-btn active" data-cat="all">Todas</button>
+        <button class="cat-btn" data-cat="autoestima">Autoestima</button>
+        <button class="cat-btn" data-cat="calma">Calma</button>
+        <button class="cat-btn" data-cat="motivacion">Motivación</button>
+      </div>
+
+      <div class="affirmation-list" id="affirmationList"></div>
+    </section>
+
+  </main>
+
+  <!-- Emergency modal -->
+  <div class="modal-overlay hidden" id="emergencyModal">
+    <div class="modal modal--emergency">
+      <button class="modal__close" id="closeEmergency">✕</button>
+      <h3>🆘 Necesito apoyo</h3>
+      <p>Estás tomando el paso correcto al pedir ayuda.</p>
+      <div class="emergency-resources">
+        <a class="resource-card" href="tel:800-290-0024" target="_blank">
+          <span>📞</span>
+          <div>
+            <strong>Línea de Crisis</strong>
+            <p>800-290-0024 (México)</p>
+          </div>
+        </a>
+        <a class="resource-card" href="https://www.befrienders.org" target="_blank">
+          <span>🌐</span>
+          <div>
+            <strong>Befrienders Worldwide</strong>
+            <p>Apoyo emocional internacional</p>
+          </div>
+        </a>
+        <div class="resource-card" id="groundingExercise">
+          <span>🧘</span>
+          <div>
+            <strong>Ejercicio de Grounding</strong>
+            <p>Toca para hacer el ejercicio 5-4-3-2-1</p>
+          </div>
+        </div>
+      </div>
+      <p class="emergency-note">⚠️ Mindora no reemplaza ayuda profesional.</p>
+    </div>
+  </div>
+
+  <!-- Grounding modal -->
+  <div class="modal-overlay hidden" id="groundingModal">
+    <div class="modal">
+      <button class="modal__close" id="closeGrounding">✕</button>
+      <h3>🧘 Ejercicio 5-4-3-2-1</h3>
+      <div class="grounding-steps" id="groundingSteps">
+        <div class="grounding-step active" data-step="0">
+          <span class="g-num">5</span>
+          <p>Nombra <strong>5 cosas</strong> que puedes <strong>VER</strong> ahora mismo.</p>
+        </div>
+        <div class="grounding-step" data-step="1">
+          <span class="g-num">4</span>
+          <p>Nombra <strong>4 cosas</strong> que puedes <strong>TOCAR</strong>.</p>
+        </div>
+        <div class="grounding-step" data-step="2">
+          <span class="g-num">3</span>
+          <p>Nombra <strong>3 cosas</strong> que puedes <strong>ESCUCHAR</strong>.</p>
+        </div>
+        <div class="grounding-step" data-step="3">
+          <span class="g-num">2</span>
+          <p>Nombra <strong>2 cosas</strong> que puedes <strong>OLER</strong>.</p>
+        </div>
+        <div class="grounding-step" data-step="4">
+          <span class="g-num">1</span>
+          <p>Nombra <strong>1 cosa</strong> que puedes <strong>SABOREAR</strong>.</p>
+        </div>
+      </div>
+      <button class="btn-primary" id="nextGrounding">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/mood.js"></script>
+  <script src="js/breathing.js"></script>
+  <script src="js/bubbles.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/affirmations.js"></script>
+</body>
+</html>
